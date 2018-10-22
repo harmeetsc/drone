@@ -60,7 +60,10 @@ public class DroneDelivery {
 				//System.out.println(distance);		
 				
 				//time formatter				
-			    Date d2 = sdf.parse(str[2]);
+			     Date d2 = sdf.parse(str[2]);
+			   
+				Order mOrder = new Order(orderNum, mAddress, d2);
+			    
 			    
 			    //System.out.println(orderNum + " " + distance + " " + sdf.format(d2));
 			    // TODO repeatable code, put it in a method
@@ -75,11 +78,11 @@ public class DroneDelivery {
 			    	}
 			    	if( map.get(timeSec) == null ) {
 			    		LinkedHashMap<String, Date> map2 = new LinkedHashMap<>();
-			    		map2.put(orderNum, d2);
+			    		map2.put(mOrder.getOrdId(), mOrder.getTimeOfOrder());
 			    		map.put(timeSec, map2);
 			    	}else {
 			    		LinkedHashMap<String, Date> map2 = map.get(timeSec);
-			    		map2.put(str[0], d2);
+			    		map2.put(mOrder.getOrdId(), mOrder.getTimeOfOrder());
 			    	}
 			    	//long elapsed = (d2.getTime() - d1.getTime())/10000; 
 			    	//System.out.println(elapsed);
